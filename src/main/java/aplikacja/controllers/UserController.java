@@ -15,44 +15,44 @@ public class UserController {
     @Autowired
     private UserDao _userDao;
 
-    @RequestMapping(value="/delete")
-    @ResponseBody
-    public String delete(long id) {
-        try {
-            User user = new User(id);
-            _userDao.delete(user);
-        }
-        catch(Exception ex) {
-            return ex.getMessage();
-        }
-        return "User succesfully deleted!";
-    }
+//    @RequestMapping(value="/delete")
+//    @ResponseBody
+//    public String delete(long id) {
+//        try {
+//            User user = new User(id);
+//            _userDao.delete(user);
+//        }
+//        catch(Exception ex) {
+//            return ex.getMessage();
+//        }
+//        return "User succesfully deleted!";
+//    }
 
-    @RequestMapping(value="/get-by-email")
-    @ResponseBody
-    public String getByEmail(String email) {
-        String userId;
-        try {
-            User user = _userDao.getByEmail(email);
-            userId = String.valueOf(user.getId());
-        }
-        catch(Exception ex) {
-            return "User not found";
-        }
-        return "The user id is: " + userId;
-    }
+//    @RequestMapping(value="/get-by-email")
+//    @ResponseBody
+//    public String getByEmail(String email) {
+//        String userId;
+//        try {
+//            User user = _userDao.getByEmail(email);
+//            userId = String.valueOf(user.getId());
+//        }
+//        catch(Exception ex) {
+//            return "User not found";
+//        }
+//        return "The user id is: " + userId;
+//    }
 
-    @RequestMapping(value="/save/{email}/{name}")
-    @ResponseBody
-    public String create(@PathVariable String email, @PathVariable String name) {
-        try {
-            User user = new User(email, name);
-            _userDao.save(user);
-        }
-        catch(Exception ex) {
-            return ex.getMessage();
-        }
-        return "User succesfully saved!";
-    }
+//    @RequestMapping(value="/save/{email}/{name}")
+//    @ResponseBody
+//    public String create(@PathVariable String email, @PathVariable String name) {
+//        try {
+//            User user = new User(email, name);
+//            _userDao.save(user);
+//        }
+//        catch(Exception ex) {
+//            return ex.getMessage();
+//        }
+//        return "User succesfully saved!";
+//    }
 
 } // class UserController

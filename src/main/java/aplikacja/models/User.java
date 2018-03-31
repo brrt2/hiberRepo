@@ -17,17 +17,31 @@ public class User {
 
     @NotNull
     @Size(min = 2, max = 80)
-    private String name;
+    private String address;
 
     public User() { }
 
-
-    public User(String email, String name) {
+    public User(String username, String email, String address) {
+        this.username = username;
         this.email = email;
-        this.name = name;
+        this.address = address;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getEmail() {
         return email;
@@ -37,12 +51,9 @@ public class User {
         this.email = value;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String value) {
-        this.name = value;
+    @Override
+    public String toString() {
+        return  username;
     }
-
-} // class User
+}

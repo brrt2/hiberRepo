@@ -1,9 +1,7 @@
 package aplikacja.models;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class ClaimDao {
+public class AdvertisementDao {
 
     @Autowired
     private SessionFactory _sessionFactory;
@@ -20,25 +18,24 @@ public class ClaimDao {
         return _sessionFactory.getCurrentSession();
     }
 
-    public void save(Claim claim) {
-        getSession().save(claim);
+    public void save(Advertisement advertisement) {
+        getSession().save(advertisement);
     }
 
-    public void delete(Claim claim) {
-        getSession().delete(claim);
+    public void delete(int id) {
+        getSession().createQuery("delete from Advertisement where id="+id).executeUpdate();
+
     }
 
     @SuppressWarnings("unchecked")
-    public List<User> getAll() {
-        return getSession().createQuery("from User").list();
+    public List<Advertisement> getAll() {
+        return getSession().createQuery("from Advertisement").list();
     }
 
-    public User getByEmail(String email) {
-        return (User) getSession().createQuery(
-                "from User where email = :email")
-                .setParameter("email", email)
-                .uniqueResult();
-    }
+
+
+
+
 
     public User getById(long id) {
         return (User) getSession().load(User.class, id);
@@ -46,7 +43,6 @@ public class ClaimDao {
 
     public void update(User user) {
         getSession().update(user);
-        return;
     }
 
 } // class UserDao

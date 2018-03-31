@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" type="text/css"
@@ -16,12 +16,12 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Spring Boot</a>
+            <a class="navbar-brand" href="#">Ad CRUD</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">Create an ad</a></li>
             </ul>
         </div>
     </div>
@@ -29,14 +29,29 @@
 
 <div class="container">
 
-    <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
+    <h2>Claims list : </h2>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Advert Id:  </th>
+            <th>Author :  </th>
+            <th>Text :   </th>
+            <th>Edit :   </th>
+            <th>Delete :   </th>
+        </tr>
+
+        <tr th:each="advertisement : ${ads}">
+            <td th:text="${advertisement.advertisementId}"><a href="${pageContext.request.contextPath}/editOffer">Edit</a></td>
+            <td th:text="${advertisement.user}"></td>
+            <td th:text="${advertisement.text}"></td>
+            <td><a th:href="${'/advertisements/edit/' + advertisement.advertisementId}" class="btn btn-default">Edit</a></td>
+            <td><a th:href="${'/advertisements/delete/' + advertisement.advertisementId}" class="btn btn-danger">Delete</a></td>
+        </tr>
+    </table>
 
     </div>
 
-</div>
 <!-- /.container -->
-
 <script type="text/javascript"
         src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
