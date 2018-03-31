@@ -19,12 +19,16 @@ public class AdvertisementDao {
     }
 
     public void save(Advertisement advertisement) {
-        getSession().save(advertisement);
+        getSession().saveOrUpdate(advertisement);
     }
 
     public void delete(int id) {
         getSession().createQuery("delete from Advertisement where id="+id).executeUpdate();
 
+    }
+
+    public Advertisement findOne(int id) {
+        return (Advertisement) getSession().createQuery("from Advertisement where id="+id).uniqueResult();
     }
 
     @SuppressWarnings("unchecked")
@@ -33,16 +37,12 @@ public class AdvertisementDao {
     }
 
 
+//    public User getById(long id) {
+//        return (User) getSession().load(User.class, id);
+//    }
 
-
-
-
-    public User getById(long id) {
-        return (User) getSession().load(User.class, id);
-    }
-
-    public void update(User user) {
-        getSession().update(user);
+    public void update(Advertisement advertisement) {
+        getSession().update(advertisement);
     }
 
 } // class UserDao

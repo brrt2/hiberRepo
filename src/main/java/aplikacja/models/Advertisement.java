@@ -5,19 +5,22 @@ import javax.persistence.*;
 public class Advertisement {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int advertisementId;
 
-    @ManyToOne
-    @JoinColumn(name = "username")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "username")
+//    private User user;
+
+    private String username;
 
     private String text;
 
     public Advertisement() {
     }
 
-    public Advertisement(User user, String text) {
-        this.user = user;
+    public Advertisement(String username, String text) {
+        this.username = username;
         this.text = text;
     }
 
@@ -29,13 +32,6 @@ public class Advertisement {
         this.advertisementId = advertisementId;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getText() {
         return text;
@@ -43,5 +39,13 @@ public class Advertisement {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

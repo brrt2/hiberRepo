@@ -28,15 +28,28 @@ public class MainController {
     }
 
 
+
+    @RequestMapping(value = "/advertisements/create", method = RequestMethod.GET)
+    public String createAd(Model model) {
+        model.addAttribute("ad", new Advertisement());
+        return "create";
+    }
+
     @RequestMapping(value = "/advertisements/edit/{id}", method = RequestMethod.GET)
-    public String editProduct(Model model, @PathVariable(value = "id") String id) {
-//        model.addAttribute("product", advertisementDao.findOne(id));
+    public String editProduct(Model model, @PathVariable(value = "id") int id) {
+        model.addAttribute("ad", advertisementDao.findOne(id));
         return "edit";
     }
 
     @RequestMapping(value = "/advertisements/delete/{id}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable int id) {
         advertisementDao.delete(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/advertisements", method = RequestMethod.POST)
+    public String saveAdvertisement(Advertisement advertisement) {
+        advertisementDao.save(advertisement);
         return "redirect:/";
     }
 
