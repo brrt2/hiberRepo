@@ -2,6 +2,7 @@ package aplikacja.controllers;
 
 import aplikacja.models.Advertisement;
 import aplikacja.models.AdvertisementDao;
+import aplikacja.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +28,27 @@ public class MainController {
         return "welcome";
     }
 
+    @RequestMapping("/usersList")
+    public String userList(Model model) {
+
+        List<User> users = advertisementDao.getAllUsers();
+
+        model.addAttribute("users", users);
+
+        return "usersList";
+    }
+
+
     @RequestMapping(value = "/advertisements/create", method = RequestMethod.GET)
     public String createAd(Model model) {
         model.addAttribute("ad", new Advertisement());
         return "create";
+    }
+
+    @RequestMapping(value = "/users/create", method = RequestMethod.GET)
+    public String createUser(Model model) {
+        model.addAttribute("user", new User());
+        return "createUser";
     }
 
     @RequestMapping(value = "/advertisements/edit/{id}", method = RequestMethod.GET)
@@ -48,6 +66,12 @@ public class MainController {
     @RequestMapping(value = "/advertisements", method = RequestMethod.POST)
     public String saveAdvertisement(Advertisement advertisement) {
         advertisementDao.save(advertisement);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public String saveUser(User user) {
+        advertisementDao.save(user);
         return "redirect:/";
     }
 }

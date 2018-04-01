@@ -8,7 +8,9 @@ public class Advertisement {
     @GeneratedValue
     private int advertisementId;
 
-    private String username;
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String text;
 
@@ -18,9 +20,10 @@ public class Advertisement {
     public Advertisement() {
     }
 
-    public Advertisement(String username, String text) {
-        this.username = username;
+    public Advertisement(User user, String text, AdvertDetails advertDetails) {
+        this.user = user;
         this.text = text;
+        this.advertDetails = advertDetails;
     }
 
     public int getAdvertisementId() {
@@ -40,12 +43,12 @@ public class Advertisement {
         this.text = text;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public AdvertDetails getAdvertDetails() {

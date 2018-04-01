@@ -23,7 +23,6 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li class="active"><a href="/users/create">Create a user</a></li>
                 <li class="active"><a href="/advertisements/create">Create an advert</a></li>
-                <li class="active"><a href="/usersList">Users</a></li>
             </ul>
         </div>
     </div>
@@ -35,29 +34,25 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>Advert Id:  </th>
-            <th>Author:  </th>
-            <th>Text:   </th>
-            <th>City:  </th>
-            <th>Country: </th>
-            <th>Edit:   </th>
-            <th>Delete:   </th>
+            <th>User Id:  </th>
+            <th>Username </th>
+            <th>Surname  </th>
+            <th>Age  </th>
 
         </tr>
 
-        <tr th:each="advertisement : ${ads}">
-            <td th:text="${advertisement.advertisementId}"><a href="${pageContext.request.contextPath}/editOffer">Edit</a></td>
-            <td th:text="${advertisement.user.username}"></td>
-            <td th:text="${advertisement.text}"></td>
-            <td th:text="${advertisement.advertDetails.city}"></td>
-            <td th:text="${advertisement.advertDetails.country}"></td>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
 
-            <td><a th:href="${'/advertisements/edit/' + advertisement.advertisementId}" class="btn btn-default">Edit</a></td>
-            <td><a th:href="${'/advertisements/delete/' + advertisement.advertisementId}" class="btn btn-danger">Delete</a></td>
+            <td><a th:href="${'/advertisements/edit/' + user.userId}" class="btn btn-default">Edit</a></td>
+            <td><a th:href="${'/advertisements/delete/' + user.userId}" class="btn btn-danger">Delete</a></td>
         </tr>
     </table>
 
-    </div>
+</div>
 
 <!-- /.container -->
 <script type="text/javascript"

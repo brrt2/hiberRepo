@@ -21,6 +21,9 @@ public class AdvertisementDao {
     public void save(Advertisement advertisement) {
         getSession().saveOrUpdate(advertisement);
     }
+    public void save(User user) {
+        getSession().saveOrUpdate(user);
+    }
 
     public void delete(int id) {
         getSession().createQuery("delete from Advertisement where id="+id).executeUpdate();
@@ -34,6 +37,11 @@ public class AdvertisementDao {
     @SuppressWarnings("unchecked")
     public List<Advertisement> getAll() {
         return getSession().createQuery("from Advertisement").list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<User> getAllUsers() {
+        return getSession().createQuery("from User").list();
     }
 
 
