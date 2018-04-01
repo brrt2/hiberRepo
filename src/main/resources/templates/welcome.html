@@ -34,16 +34,22 @@
     <table class="table table-bordered">
         <tr>
             <th>Advert Id:  </th>
-            <th>Author :  </th>
-            <th>Text :   </th>
-            <th>Edit :   </th>
-            <th>Delete :   </th>
+            <th>Author:  </th>
+            <th>Text:   </th>
+            <th>City:  </th>
+            <th>Country: </th>
+            <th>Edit:   </th>
+            <th>Delete:   </th>
+
         </tr>
 
         <tr th:each="advertisement : ${ads}">
             <td th:text="${advertisement.advertisementId}"><a href="${pageContext.request.contextPath}/editOffer">Edit</a></td>
             <td th:text="${advertisement.username}"></td>
             <td th:text="${advertisement.text}"></td>
+            <td th:text="${advertisement.advertDetails.city}"></td>
+            <td th:text="${advertisement.advertDetails.country}"></td>
+
             <td><a th:href="${'/advertisements/edit/' + advertisement.advertisementId}" class="btn btn-default">Edit</a></td>
             <td><a th:href="${'/advertisements/delete/' + advertisement.advertisementId}" class="btn btn-danger">Delete</a></td>
         </tr>

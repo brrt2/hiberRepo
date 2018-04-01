@@ -12,6 +12,9 @@ public class Advertisement {
 
     private String text;
 
+    @Embedded
+    AdvertDetails advertDetails;
+
     public Advertisement() {
     }
 
@@ -43,5 +46,13 @@ public class Advertisement {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public AdvertDetails getAdvertDetails() {
+        return advertDetails;
+    }
+
+    public void setAdvertDetails(AdvertDetails advertDetails) {
+        this.advertDetails = advertDetails;
     }
 }
