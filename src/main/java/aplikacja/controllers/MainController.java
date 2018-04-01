@@ -24,10 +24,8 @@ public class MainController {
 
         model.addAttribute("ads", advertisements);
 
-        return "welcome" ;
+        return "welcome";
     }
-
-
 
     @RequestMapping(value = "/advertisements/create", method = RequestMethod.GET)
     public String createAd(Model model) {
@@ -52,7 +50,4 @@ public class MainController {
         advertisementDao.save(advertisement);
         return "redirect:/";
     }
-
-
-
 }

@@ -5,12 +5,8 @@ import javax.persistence.*;
 public class Advertisement {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int advertisementId;
-
-//    @ManyToOne
-//    @JoinColumn(name = "username")
-//    private User user;
 
     private String username;
 
