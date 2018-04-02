@@ -63,6 +63,18 @@ public class MainController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/users/edit/{id}", method = RequestMethod.GET)
+    public String editUser(Model model, @PathVariable(value = "id") int id) {
+        model.addAttribute("user", advertisementDao.findUser(id));
+        return "editUser";
+    }
+
+    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable int id) {
+        advertisementDao.deleteUser(id);
+        return "redirect:/usersList";
+    }
+
     @RequestMapping(value = "/advertisements", method = RequestMethod.POST)
     public String saveAdvertisement(Advertisement advertisement) {
         advertisementDao.save(advertisement);
@@ -72,6 +84,14 @@ public class MainController {
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String saveUser(User user) {
         advertisementDao.save(user);
-        return "redirect:/";
+        return "redirect:/usersList";
     }
+
+    @RequestMapping(value = "/error", method = RequestMethod.GET)
+    public String displayErrorMessage() {
+        return "error";
+    }
+
+
+
 }

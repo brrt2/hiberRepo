@@ -16,13 +16,13 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Ad CRUD</a>
+            <a class="navbar-brand">Praca inżynierska - aplikacja</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li class="active"><a href="/users/create">Create a user</a></li>
-                <li class="active"><a href="/advertisements/create">Create an advert</a></li>
+                <li class="active"><a href="/">Strona główna</a></li>
+                <li class="active"><a href="/users/create">Dodaj użytkownika</a></li>
+                <li class="active"><a href="/advertisements/create">Dodaj ogłoszenie</a></li>
             </ul>
         </div>
     </div>
@@ -30,14 +30,16 @@
 
 <div class="container">
 
-    <h2>Claims list : </h2>
+    <h2>Lista użytkowników </h2>
 
     <table class="table table-bordered">
         <tr>
-            <th>User Id:  </th>
-            <th>Username </th>
-            <th>Surname  </th>
-            <th>Age  </th>
+            <th>Numer użytkownika  </th>
+            <th>Imie </th>
+            <th>Nazwisko  </th>
+            <th>Wiek </th>
+            <th>Edytuj </th>
+            <th>Usuń </th>
 
         </tr>
 
@@ -47,8 +49,8 @@
             <td th:text="${user.surname}"></td>
             <td th:text="${user.age}"></td>
 
-            <td><a th:href="${'/advertisements/edit/' + user.userId}" class="btn btn-default">Edit</a></td>
-            <td><a th:href="${'/advertisements/delete/' + user.userId}" class="btn btn-danger">Delete</a></td>
+            <td><a th:href="${'/users/edit/' + user.userId}" class="btn btn-default">Edytuj</a></td>
+            <td><a th:href="${'/users/delete/' + user.userId}" class="btn btn-danger">Usuń</a></td>
         </tr>
     </table>
 

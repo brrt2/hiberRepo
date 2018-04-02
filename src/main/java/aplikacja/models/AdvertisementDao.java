@@ -30,8 +30,17 @@ public class AdvertisementDao {
 
     }
 
+    public void deleteUser(int id) {
+        getSession().createQuery("delete from User where id="+id).executeUpdate();
+
+    }
+
     public Advertisement findOne(int id) {
         return (Advertisement) getSession().createQuery("from Advertisement where id="+id).uniqueResult();
+    }
+
+    public User findUser(int id) {
+        return (User) getSession().createQuery("from User where id="+id).uniqueResult();
     }
 
     @SuppressWarnings("unchecked")
@@ -53,4 +62,4 @@ public class AdvertisementDao {
         getSession().update(advertisement);
     }
 
-} // class UserDao
+}
