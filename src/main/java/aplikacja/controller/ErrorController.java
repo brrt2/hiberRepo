@@ -12,4 +12,8 @@ public class ErrorController {
         return "error";
     }
 
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String displayAccessDeniedErrorMessage() {
+        return "error403";
+    }
 }
