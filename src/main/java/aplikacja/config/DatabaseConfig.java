@@ -1,4 +1,4 @@
-package aplikacja.configs;
+package aplikacja.config;
 
 import java.util.Properties;
 

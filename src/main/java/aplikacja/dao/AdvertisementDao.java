@@ -1,11 +1,14 @@
-package aplikacja.models;
+package aplikacja.dao;
 
 import java.util.List;
 import javax.transaction.Transactional;
+import aplikacja.model.Advertisement;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 @Transactional
@@ -21,42 +24,24 @@ public class AdvertisementDao {
     public void save(Advertisement advertisement) {
         getSession().saveOrUpdate(advertisement);
     }
-    public void save(User user) {
-        getSession().saveOrUpdate(user);
-    }
 
-    public void delete(int id) {
-        getSession().createQuery("delete from Advertisement where id="+id).executeUpdate();
-
-    }
-
-    public void deleteUser(int id) {
-        getSession().createQuery("delete from User where id="+id).executeUpdate();
-
+    public void delete(int advertId) {
+        String hql = "DELETE FROM Advertisement "  +
+                "WHERE id = :advert_id";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("advert_id", advertId);
+        int result = query.executeUpdate();
     }
 
     public Advertisement findOne(int id) {
-        return (Advertisement) getSession().createQuery("from Advertisement where id="+id).uniqueResult();
-    }
-
-    public User findUser(int id) {
-        return (User) getSession().createQuery("from User where id="+id).uniqueResult();
+        return (Advertisement) getSession().createQuery("FROM Advertisement WHERE id = :ad_id")
+                .setParameter("ad_id",id).uniqueResult();
     }
 
     @SuppressWarnings("unchecked")
     public List<Advertisement> getAll() {
         return getSession().createQuery("from Advertisement").list();
     }
-
-    @SuppressWarnings("unchecked")
-    public List<User> getAllUsers() {
-        return getSession().createQuery("from User").list();
-    }
-
-
-//    public User getById(long id) {
-//        return (User) getSession().load(User.class, id);
-//    }
 
     public void update(Advertisement advertisement) {
         getSession().update(advertisement);

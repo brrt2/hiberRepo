@@ -1,4 +1,4 @@
-package aplikacja.models;
+package aplikacja.model;
 
 import javax.persistence.Embeddable;
 import java.time.LocalDate;
