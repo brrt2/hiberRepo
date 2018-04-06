@@ -1,4 +1,5 @@
 package aplikacja.model;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +9,7 @@ public class Advertisement {
     @GeneratedValue
     private int advertisementId;
 
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;
 

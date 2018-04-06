@@ -29,7 +29,7 @@ public class AppAccessDeniedHandler implements AccessDeniedHandler {
 
         if (auth != null) {
             logger.info("User '" + auth.getName()
-                    + "' attempted to access the protected URL: "
+                    + "' tried to access the protected URL: "
                     + httpServletRequest.getRequestURI());
         }
 

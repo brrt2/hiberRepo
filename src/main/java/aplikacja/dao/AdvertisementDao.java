@@ -2,6 +2,7 @@ package aplikacja.dao;
 
 import java.util.List;
 import javax.transaction.Transactional;
+
 import aplikacja.model.Advertisement;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,7 +27,7 @@ public class AdvertisementDao {
     }
 
     public void delete(int advertId) {
-        String hql = "DELETE FROM Advertisement "  +
+        String hql = "DELETE FROM Advertisement " +
                 "WHERE id = :advert_id";
         Query query = getSession().createQuery(hql);
         query.setParameter("advert_id", advertId);
@@ -35,7 +36,7 @@ public class AdvertisementDao {
 
     public Advertisement findOne(int id) {
         return (Advertisement) getSession().createQuery("FROM Advertisement WHERE id = :ad_id")
-                .setParameter("ad_id",id).uniqueResult();
+                .setParameter("ad_id", id).uniqueResult();
     }
 
     @SuppressWarnings("unchecked")

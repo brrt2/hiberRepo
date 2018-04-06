@@ -19,7 +19,7 @@ public class AdvertisementService {
 
     public void delete(int id) {
 
-    advertisementDao.delete(id);
+        advertisementDao.delete(id);
     }
 
     public Advertisement findOne(int id) {

@@ -15,7 +15,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
+
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/","/css/**").permitAll()
@@ -33,7 +33,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
-    // create two users, admin and user
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 

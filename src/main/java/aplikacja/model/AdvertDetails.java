@@ -10,7 +10,8 @@ public class AdvertDetails {
     private String city;
     private String category;
 
-    public AdvertDetails() { }
+    public AdvertDetails() {
+    }
 
     public String getCity() {
         return city;
